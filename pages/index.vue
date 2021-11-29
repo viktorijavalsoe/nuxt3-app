@@ -29,6 +29,7 @@ export default defineComponent({
                 id: randomId,
                 name: newWorkspaceName.value
             })
+						newWorkspaceName.value = ''
         }
         return {
             workspaces,
