@@ -4,8 +4,8 @@
   <h2>Workspaces</h2>
   <input type="text" v-model="newWorkspaceName">
   <button @click="createWorkspace">Create a workspace</button>
-  <ul>
-      <li v-for="workspace in workspaces" :key="workspace.id">
+  <ul class="workspaceList">
+      <li v-for="workspace in workspaces" :key="workspace.id" class="workspaceList__card">
           {{workspace.id}}: {{workspace.name}}
       </li>
   </ul>
@@ -39,6 +39,18 @@ export default defineComponent({
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.workspaceList{
+	margin-left: 0;
+	padding-left: 0;
+
+	&__card{
+		display: block;
+		padding: 2rem;
+		border-radius: 4px;
+		margin-bottom: 1rem;
+		border: 1px solid black;
+	}
+}
 
 </style>
