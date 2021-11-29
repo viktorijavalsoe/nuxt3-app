@@ -2,7 +2,7 @@
   <h1>Home page</h1>
   <h2>Recently viewed</h2>
   <h2>Workspaces</h2>
-  <input type="text" v-model="newWorkspaceName">
+  <input type="text" v-model="newWorkspaceName" @keyup.enter="createWorkspace">
   <button @click="createWorkspace">Create a workspace</button>
   <ul class="workspaceList">
       <li v-for="workspace in workspaces" :key="workspace.id" class="workspaceList__card">
@@ -14,13 +14,14 @@
 <script lang="ts">
 import { defineComponent, } from 'vue';
 import { ref } from 'vue'
+interface Workspace {
+	id: Number,
+	name: String
+}
 
 export default defineComponent({
     setup (props) {
-         const workspaces = ref([
-            {id: 1, name:'Test'},
-            {id: 2, name:'Experiment'},
-        ])  
+         const workspaces = ref<Workspace[]>([])  
         const newWorkspaceName= ref('')
         const createWorkspace = () => {
             const randomId = Math.floor(Math.random() * 100)
